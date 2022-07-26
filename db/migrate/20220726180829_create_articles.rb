@@ -5,5 +5,11 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.text    :description
 
     end
+    #create_table (:articles) {|t|
+    #  t.string(:title)
+    #  t.text(:description)
+
+    #}
+
   end
 end
