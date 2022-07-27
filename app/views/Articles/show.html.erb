@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Showing Article Details :</h1>
+    <% if flash[:notice] %>
+    <h4><%= flash[:notice]%></h4>
+    <% end %>
+
+    <p><strong>Title : </strong><%= @article.title %></p>
+    <p><strong>Description :</strong> <%= @article.description %></p>
+  </body>
+</html>
