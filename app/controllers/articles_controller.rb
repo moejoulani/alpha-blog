@@ -48,5 +48,31 @@ if  @article.save
 
 end
 
+def edit #get
+@article = Article.find(params[:id])
+render :template => "Articles/edit"
+end
+
+def update
+@article = Article.find(params[:id])
+if @article.update(params.require(:article).permit(:title,:description))
+  flash[:notice] = "Updated Successfully The #{@article.id} Article"
+  redirect_to @article
+else
+  render :template => "Articles/edit"
+end
+
+end
+
+ def destroy
+   @article = Article.find(params[:id])
+   if @article.destroy
+     flash[:notice] = "Deleted Successfully The #{@article.id} Article"
+     redirect_to @article
+   else
+     render :template => "Articles/edit"
+   end
+ end
+
 
 end

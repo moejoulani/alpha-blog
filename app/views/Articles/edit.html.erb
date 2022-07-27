@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <% if @article.errors.any?  %>
+    <h2>The Following Errors Prevented The Artickle From Being Save </h2>
+    <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+    <h1>Edit Article</h1>
+    <%= form_with(model: @article,local: true)  do |formx| %>
+
+    <p>
+   <%= formx.label :title %>
+   <%= formx.text_field :title %>
+</p>
+<p>
+     <%= formx.label :description %>
+     <%= formx.text_area :description %>
+</p>
+<p>
+  <%= formx.submit %>
+</p>
+  <% end %>
+
+  </body>
+</html>
