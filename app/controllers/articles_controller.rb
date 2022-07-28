@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
  def index
    @articles = Article.all
 
+
    render :template => "Articles/index"
  end
 def new
@@ -24,11 +25,14 @@ end
 
 def create
     # TO DEBUG SET KEYWORD DEBUGGER ANYWHERE YOU WANT TO # DEBUG:
+    # here i need to user to complete the process
+
   title  = params[:article][:title]
   desc   = params[:article][:description]
   #render plain: params.require(:article).permit(:title,:description)
   @article = Article.new(article_params)
-
+  user = User.first
+  @article.user = user
 if  @article.save
     #  render(plain:article_path(@article))
       flash[:notice] = "Article Was Created Successfully."
@@ -80,6 +84,7 @@ end
  def set_article
 
    @article = Article.find(params[:id])
+   @article.user = User.last
 
  end
 
