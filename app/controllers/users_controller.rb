@@ -14,6 +14,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    render :template => 'Users/edit'
+  end
+
+  def update
+    @user  = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "Your Account Information was Successfully updated"
+      redirect_to articles_path
+    else
+      render 'Users/edit'
+
+    end
+  end
 private
 def user_params
   params.require(:user).permit(:username,:email,:password)
