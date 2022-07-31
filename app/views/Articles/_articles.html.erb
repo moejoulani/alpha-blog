@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Articles Listing Page : </h1>
+    <% @articles.each do |item| %>
+    <div class="card">
+  <h5 class="card-header">By <%= item.user.username if item.user %> </h5>
+  <div class="card-body">
+    <h5 class="card-title"><%= item.title %></h5>
+    <p class="card-text"><%= item.description %></p>
+  <div class="d-flex justify-content-center">
+     <%= link_to 'Show' ,article_path(item.id),method: :get , class:"btn btn-primary m-1" %>
+     <%= link_to 'Delete' ,article_path(item.id),method: :delete ,class:"btn btn-danger m-1"%>
+     <%= link_to 'Edit' ,edit_article_path(item)  ,class:"btn btn-success m-1"%>
+
+  </div>
+  </div>
+  <div class="card-footer text-muted">
+    <small>Created <%= time_ago_in_words(item.created_at) %> ago ,
+      Updated <%= time_ago_in_words(item.updated_at) %> ago
+
+    </small>
+  </div>
+</div>
+    <% end %>
+
+
+    <%= link_to "Create New Article" ,new_article_path%>
+  </body>
+</html>

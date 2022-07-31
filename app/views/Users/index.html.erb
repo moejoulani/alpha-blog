@@ -1,0 +1,26 @@
+<h1 class="text-center mt-4">Alpha Bloggers</h1>
+<% @users.each do |item| %>
+<div class="card mt-2">
+<h5 class="card-header"> <%= item.username %>  </h5>
+<div class="card-body">
+<%= gravatar_for(item) %>
+<p class="card-text ">
+  <div class="d-flex justify-content-center">
+  <%= pluralize(item.articles.count,"article") %>
+  </div>
+</p>
+<div class="d-flex justify-content-center">
+  <%= link_to 'View Profile' , item ,class:"btn btn-outline-success m-1" %>
+    <%= link_to 'Edit Profile' , edit_user_path(item) ,class:"btn btn-outline-primary m-1" %>
+
+</div>
+
+</div>
+<div class="card-footer text-muted">
+<small>Joined <%= time_ago_in_words(item.created_at) %> ago ,
+
+
+</small>
+</div>
+</div>
+<% end %>

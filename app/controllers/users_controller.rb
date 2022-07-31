@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+
+  def index
+    @users = User.all
+    render :template => 'Users/index'
+  end
+
   def new
     @user  = User.new
     render :template => 'Users/new'
@@ -29,6 +35,13 @@ class UsersController < ApplicationController
 
     end
   end
+  def show
+    @user = User.find(params[:id])
+    @articles = @user.articles
+    render 'Users/show'
+  end
+
+
 private
 def user_params
   params.require(:user).permit(:username,:email,:password)
