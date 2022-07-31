@@ -6,13 +6,11 @@
   </head>
   <body>
     <h1>Showing Article Details :</h1>
-    <% if flash[:notice] %>
-    <h4><%= flash[:notice]%></h4>
-    <% end %>
+  
 
     <p><strong>Title : </strong><%= @article.title %></p>
     <p><strong>Description :</strong> <%= @article.description %></p>
-    <p><strong>By : </strong><%= @article.user.username %></p>
+    <p><strong>By : </strong><%= @article.user.username if @article.user %></p>
     <%= link_to 'Edit', edit_article_path(@article) %> |
     <%= link_to 'Delete' ,article_path(@article), method: :delete , data: {confirm: "Are You Sure ?"} %> |
     <%= link_to 'Return To Articles Listing' ,articles_path() %>

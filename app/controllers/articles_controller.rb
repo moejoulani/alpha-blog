@@ -73,7 +73,7 @@ end
  def destroy
    #@article = Article.find(params[:id])
    if @article.destroy
-     flash[:notice] = "Deleted Successfully The #{@article.id} Article"
+     flash[:danger] = "Deleted Successfully The #{@article.id} Article"
      redirect_to @article
    else
      render :template => "Articles/edit"
